@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"
+    />
+    <!-- Font Awesome Icons  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Nav Bar  -->
+    <link rel="stylesheet" href="..\Nav Bar\navbar-style.css" type="text/css" />
+    <title>User Profile Page</title>
+    <style>
+      * {
+        font-family: Arial;
+      }
+
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      .profile-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 100px;
+        margin-bottom: 0;
+      }
+
+      .profile-picture {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+
+      .profile-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .profile-details {
+        text-align: center;
+      }
+
+      .profile-details h1 {
+        font-size: 32px;
+        margin-bottom: 5px;
+      }
+
+      .profile-details h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .profile-details p {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .profile-details ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 20px;
+      }
+
+      .profile-details li {
+        display: inline-block;
+        margin-right: 20px;
+        font-size: 16px;
+      }
+
+      .profile-details li:last-child {
+        margin-right: 0;
+      }
+
+      .profile-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .profile-buttons button {
+        padding: 10px 20px;
+        margin-right: 10px;
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .profile-buttons button:hover {
+        background-color: gray;
+        border: 1px solid gray;
+        color: white;
+      }
+
+      #userprofile-btn1 {
+        background-color: #4267b2;
+        border: 1px solid #4267b2;
+        color: white;
+      }
+      #userprofile-btn1:hover {
+        background-color: #294c93;
+        border: 1px solid #294c93;
+      }
+
+      .posts-container {
+        display: grid;
+        padding: 0px 150px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        margin: 50px;
+        margin-bottom: 100px;
+      }
+
+      .post {
+        position: relative;
+        width: 100%;
+        padding-bottom: 100%;
+        overflow: hidden;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+      }
+
+      .post img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      footer {
+        background-color: #fafafa;
+        border-top: 1px solid #dbdbdb;
+        padding: 20px;
+      }
+
+      .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 30px;
+        margin-right: 40px;
+      }
+
+      .links a {
+        color: #003569;
+        font-size: 14px;
+        text-decoration: none;
+        margin-right: 16px;
+        margin-bottom: 8px;
+      }
+
+      .social-icons a {
+        color: #8e8e8e;
+        font-size: 20px;
+        margin-right: 16px;
+      }
+
+      .social-icons a:last-child {
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="height: 55px; padding: 0px 20px;">
+      <a class="navbar-brand" href="..\index.html">
+        <img src="https://www.logodesignbase.com/wp-content/uploads/2022/02/square-logo.jpg" width="30" height="30"
+          class="d-inline-block align-top" alt="Page logo">
+        <span class="font-weight-bold ml-2">Social Media</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <form class="form-inline">
+          <div class="search-container">
+            <input id="nav-searchbar" type="text" placeholder="Search Social Media" />
+            <button type="submit" style="border-radius: 50%; padding: 7px 12px;"><i class="fa fa-search"></i></button>
+          </div>        
+        </form>
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#">
+              <i class="fas fa-user-friends fa-lg"></i>
+            </a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#">
+              <i class="fab fa-facebook-messenger fa-lg"></i>
+            </a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#">
+              <i class="fas fa-bell fa-lg"></i>
+            </a>
+          </li>
+          <li class="nav-item mx-2">
+            <div class="dropdown">
+              <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <img src="https://remote-tools-images.s3.amazonaws.com/best+discord+pfp/blog+12/anime/anime/1+(1).jpg"
+                  class="rounded-circle" alt="Profile image" width="30" height="30">
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="User Profile Page/user-profile-page.html">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings & Privacy</a></li>
+                <li><a class="dropdown-item" href="#">Help & Support</a></li>
+                <li><a class="dropdown-item" href="#">Display Accessibility</a></li>
+                <li><a class="dropdown-item" href="#">Log out</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="profile-container">
+      <div class="profile-picture">
+        <img
+          src="https://remote-tools-images.s3.amazonaws.com/best+discord+pfp/blog+12/anime/anime/1+(1).jpg"
+          alt="Profile Picture"
+        />
+      </div>
+      <div class="profile-details">
+        <h1>John Doe</h1>
+        <h2>@johndoe</h2>
+        <p>This is an example of user bio/ user description.</p>
+        <ul>
+          <li><strong>Posts:</strong> 9</li>
+          <li><strong>Followers:</strong> 150</li>
+          <li><strong>Following:</strong> 50</li>
+        </ul>
+        <div class="profile-buttons">
+          <button id="userprofile-btn1">Edit Profile</button>
+          <button>Settings</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="posts-container">
+      <div class="post">
+        <img
+          src="https://i.pinimg.com/564x/24/10/c5/2410c594b2e391baa9e63674dd535f22.jpg"
+          alt="Post 1"
+        />
+      </div>
+      <div class="post">
+        <img
+          src="https://i.pinimg.com/564x/57/ff/58/57ff58218b2b034678d06a5aaa773702.jpg"
+          alt="Post 2"
+        />
+      </div>
+      <div class="post">
+        <img
+          src="https://i.pinimg.com/564x/f0/cc/4f/f0cc4fed29acf129a6f45e21d326e8c5.jpg"
+          alt="Post 3"
+        />
+      </div>
+      <div class="post">
+        <img
+          src="https://i.pinimg.com/564x/3b/09/53/3b0953619a117227dceb87c651bc0dde.jpg"
+          alt="Post 4"
+        />
+      </div>
+      <div class="post">
+        <img
+          src="https://i.pinimg.com/564x/d2/62/28/d26228dc665d0558f1c939e4bd474566.jpg"
+          alt="Post 5"
+        />
+      </div>
+      <div class="post">
+        <img
+          src="https://i.pinimg.com/564x/5f/06/99/5f0699ccb77fa065176e688b7734e5c8.jpg"
+          alt="Post 6"
+        />
+      </div>
+      <div class="post">
+        <img
+          src="https://i.pinimg.com/564x/0c/6a/76/0c6a76df3a86e6a1c1b039c8d225304f.jpg"
+          alt="Post 7"
+        />
+      </div>
+      <div class="post">
+        <img
+          src="https://i.pinimg.com/564x/9f/aa/f2/9faaf2ae53d4609410d45e9eb659b586.jpg"
+          alt="Post 8"
+        />
+      </div>
+      <div class="post">
+        <img
+          src="https://i.pinimg.com/564x/53/73/a1/5373a114f7608615fb5ee3c38ed3624c.jpg"
+          alt="Post 9"
+        />
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="logo">
+          <img
+            src="https://www.logodesignbase.com/wp-content/uploads/2022/02/square-logo.jpg"
+            alt="Social Media Logo"
+          />
+        </div>
+        <div class="links">
+          <a href="#">About Us</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
