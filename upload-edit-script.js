@@ -1,5 +1,6 @@
 const fileInput = document.querySelector(".file-input"),
   filterOptions = document.querySelectorAll(".filter button"),
+  fileType = document.querySelectorAll(".types button"),
   filterName = document.querySelector(".filter-info .name"),
   filterValue = document.querySelector(".filter-info .value"),
   filterSlider = document.querySelector(".slider input"),
@@ -14,6 +15,7 @@ let brightness = "100",
   saturation = "100",
   inversion = "0",
   grayscale = "0";
+  type="jpg";
 let rotate = 0,
   flipHorizontal = 1,
   flipVertical = 1;
@@ -32,6 +34,28 @@ const applyFilter = () => {
   previewImg.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
   previewImg.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
 };
+
+fileType.forEach((option) => {
+  option.addEventListener("click", () => {
+    document.querySelector(".active").classList.remove("active");
+    option.classList.add("active");
+    switch(option.id){
+      case "conjpg":
+        type="jpg";
+        break;
+      case "conpng":
+        type="png";
+        break;
+      case "congif":
+        type="gif";
+        break;
+      case "conwebp":
+        type="webp";
+        break;
+    }
+    console.log(type);
+  })
+})
 
 filterOptions.forEach((option) => {
   option.addEventListener("click", () => {
@@ -99,6 +123,7 @@ const resetFilter = () => {
   flipHorizontal = 1;
   flipVertical = 1;
   filterOptions[0].click();
+  fileType[0].click();
   applyFilter();
 };
 
@@ -125,8 +150,8 @@ const saveImage = () => {
   );
 
   const link = document.createElement("a");
-  link.download = "image.jpg";
-  link.href = canvas.toDataURL();
+  link.href = canvas.toDataURL('image.'+type);
+  link.download = "image."+type;
   link.click();
 };
 
